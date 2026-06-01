@@ -1,0 +1,7 @@
+# Never commit secrets or local state
+.env
+users.json
+agent.log
+__pycache__/
+*.pyc
+.DS_Store

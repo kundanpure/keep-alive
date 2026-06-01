@@ -1,0 +1,31 @@
+name: Travyn Phantom Agent
+
+on:
+  schedule:
+    # Runs every 10 minutes — keeps Render alive 24/7
+    # GitHub Actions cron uses UTC (IST = UTC+5:30)
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Also allows manual trigger from GitHub UI
+
+jobs:
+  run-agent-session:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8  # Kill if a session hangs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run one agent session
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TRAVYN_API_URL: ${{ secrets.TRAVYN_API_URL }}
+        run: python run_once.py
