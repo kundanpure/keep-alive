@@ -1,6 +1,8 @@
 name: Travyn Phantom Agent
 
 on:
+  push:
+    branches: [ "main", "master" ]
   schedule:
     # Runs every 10 minutes — keeps Render alive 24/7
     # GitHub Actions cron uses UTC (IST = UTC+5:30)
