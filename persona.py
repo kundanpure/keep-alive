@@ -248,6 +248,7 @@ Important rules:
                 "approvalMode":approval,
                 "womenOnly":   False,
                 "trustScoreMin": 0,
+                "coverImageUrl": data.get("coverImageUrl", f"https://picsum.photos/seed/{uid}/1200/800"),
             },
             "_meta": {
                 "occupation":  data.get("occupation", ""),
@@ -313,6 +314,7 @@ Important rules:
                 "approvalMode":"MANUAL",
                 "womenOnly":   False,
                 "trustScoreMin": 0,
+                "coverImageUrl": f"https://picsum.photos/seed/{uid}/1200/800",
             },
             "_meta": {"occupation": job, "city": city, "destination": destination},
         }
